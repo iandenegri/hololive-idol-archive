@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Hololive Singing Archive</h1>
+
+List of streams from newest to oldest.
+{% for stream in stream_list %}
+    <li><a href="{% url 'archive:stream_detail' stream.id %}">{{ stream.name }}</a></a></li>
+{% empty %}
+    <li>No streams recorded yet.</li>
+{% endfor %}
+
+{% if page_obj.has_previous or page_obj.has_next %}
+    {% if page_obj.has_previous %}
+    <a href="?page=1">&laquo; first</a>
+    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+    {% endif %}
+    <span class="current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    </span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+    {% endif %}
+{% endif %}
+
+
+{% endblock %}

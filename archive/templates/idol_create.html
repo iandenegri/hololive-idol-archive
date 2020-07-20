@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Hololive Singing Archive</h1>
+<h2>Add An Idol</h2>
+
+<form method="post">{% csrf_token %}
+    <!-- <div class="form-group">
+        <label for="exampleInputEmail1">Idol Name</label>
+        <input class="form-control" type="text" name="name" id="name" placeholder="Idol Name">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Idol Name (Japanese)</label>
+        <input class="form-control" type="text" name="jp_name" id="jp_name" placeholder="Idol Name (Japanese)">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Idol's Channel URL</label>
+        <input class="form-control" type="url" name="channel" id="channel" placeholder="Idol's Channel URL">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Idol's Channel's ID</label>
+        <input class="form-control" type="text" name="channel_id" id="channel_id" placeholder="Idol's Channel's ID">
+        <small id="channelIDHelp" class="form-text text-muted">This is usually the random jumble of characters at the end of the Channel URL.</small>
+    </div> -->
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+ 
+{% endblock %}

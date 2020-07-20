@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1><a href="{{ stream.link }}">{{ stream.name }}</a></h1>
+<h3><a href="{% url 'archive:idol_detail' stream.singer.id %}">{{ stream.singer.name }}</a></h3>
+<h4>Original Stream Date: {{ stream.date_posted }}</h4>
+
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/{{ stream.youtube_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+
+{% if not stream.original_song %}
+    <h3>Song List:</h3>
+    {% for song in stream.songs.all %}
+        <p>{{ song.playlist_number }}. {{ song.name }} - {{ song.original_artist }}</p>
+    {% endfor %}
+{% endif %}
+
+{% if request.user.is_authenticated %}
+<a class="nav-link" href="{% url 'archive:stream_update' stream.id %}">Update Stream Information</a>
+{% endif %}
+
+{% endblock %}
