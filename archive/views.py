@@ -4,16 +4,17 @@ import os
 # Django
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.db.models import Q
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import DeleteView, UpdateView
 
-from .models import Stream, Idol
+from .models import Stream, Idol, Song
 
 # Third Party
 from googleapiclient.discovery import build
 
-youtube_api_key = os.environ.get('YOUTUBE_KEY', 'replace_me')
+youtube_api_key = os.environ.get('YOUTUBE_KEY', 'replace me')
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 # Create your views here.
@@ -28,6 +29,51 @@ class HomeView(TemplateView):
         context['latest_streams'] = Stream.objects.all().order_by('pk')[:5]
         return context
 
+class SearchResultsView(TemplateView):
+
+    template_name = 'search.html'
+
+    def get(self, request, *args, **kwargs):
+        search_query = request.GET.get('q')
+        stream_results = None
+        try:
+            # Streams containing songs that match that result
+            self.stream_song_results = Stream.objects.filter(
+                Q(songs__name__icontains=search_query) | \
+                Q(songs__romanji_name__icontains=search_query) | \
+                Q(songs__translated_name__icontains=search_query)
+            )
+        except Exception as e:
+            print(e)
+        try:
+            # Streams that match that result
+            self.stream_results = Stream.objects.filter(
+                Q(name__icontains=search_query) | \
+                Q(singer__name__icontains=search_query) | \
+                Q(singer__jp_name__icontains=search_query)
+            )
+        except Exception as e:
+            print(e)
+        try:
+            # Songs that match that result
+            self.song_results = Song.objects.filter(
+                Q(name__icontains=search_query) | \
+                Q(romanji_name__icontains=search_query) | \
+                Q(translated_name__icontains=search_query) | \
+                Q(original_artist__icontains=search_query) | \
+                Q(romanji_original_artist__icontains=search_query)
+            )
+        except Exception as e:
+            print(e)
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(
+            stream_song_results=self.stream_song_results,
+            stream_results=self.stream_results,
+            song_results=self.song_results,
+            **kwargs)
+        
 #######################################
 # STREAM VIEWS
 #######################################
@@ -38,6 +84,7 @@ class StreamListView(ListView):
     model = Stream
     context_object_name = 'stream_list'
     paginate_by = 10
+    ordering = ['-date_posted']
 
 class StreamDetailView(DetailView):
 
@@ -71,7 +118,7 @@ class IdolListView(ListView):
     template_name = 'idol_list.html'
     model = Idol
     context_object_name = 'idol_list'
-    paginate_by = 10
+    paginate_by = 100
     queryset = Idol.objects.all().order_by('name')
 
 
@@ -122,3 +169,18 @@ class IdolUpdateView(UpdateView):
     model = Idol
     fields = '__all__'
     template_name = 'idol_update.html'
+
+#######################################
+# SONG VIEWS
+#######################################
+
+class SongDetailView(DetailView):
+
+    template_name = 'song_detail.html'
+    model = Song
+    context_object_name = 'song'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['streams_with_song'] = Stream.objects.filter(Q(songs=self.kwargs['pk']))
+        return context

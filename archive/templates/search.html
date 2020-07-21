@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Hololive Singing Archive</h1>
+
+<h2>Search Results for: <em>{{request.GET.q}}</em></h2>
+{% if stream_song_results|length > 0 or stream_results|length > 0 or song_results|length > 0 %}
+<ul>
+    <h3>Streams With that Song In Their Tracklist:</h3>
+    {% for result in stream_song_results %}
+        <li><a href="{{ result.get_absolute_url }}">{{ result }}</a></li>
+    {% endfor %}
+    <h3>Streams You Might Be looking for:</h3>
+    {% for result in stream_results %}
+        <li><a href="{{ result.get_absolute_url }}">{{ result }}</a></li>
+    {% endfor %}
+    <h3>Songs Matching That Query:</h3>
+    {% for result in song_results %}
+        <li><a href="{{ result.get_absolute_url }}">{{ result }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>Sorry, no streams or songs were found for that search query!</p>
+{% endif %}
+{% endblock %}
