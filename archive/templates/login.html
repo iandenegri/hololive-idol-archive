@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Hololive Singing Archive</h1>
+<h2>Login</h2>
+
+<form method="post">{% csrf_token %}
+
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+ 
+{% endblock %}

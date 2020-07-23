@@ -2,12 +2,15 @@
 import os
 
 # Django
+from django.db.models import Q
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.db.models import Q
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import DeleteView, UpdateView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from .models import Stream, Idol, Song
 
@@ -29,22 +32,40 @@ class HomeView(TemplateView):
         context['latest_streams'] = Stream.objects.all().order_by('pk')[:5]
         return context
 
+
+class LoginUser(LoginView):
+    
+    template_name = 'login.html'
+
+    def get_success_url(self):
+        return reverse_lazy('archive:index')
+
+
+class LogoutUser(LogoutView):
+    
+    # template_name = 'login.html'  # your template
+
+    def get_success_url(self):
+        return reverse_lazy('archive:index')
+
+
 class SearchResultsView(TemplateView):
 
     template_name = 'search.html'
 
     def get(self, request, *args, **kwargs):
         search_query = request.GET.get('q')
-        stream_results = None
         try:
             # Streams containing songs that match that result
             self.stream_song_results = Stream.objects.filter(
-                Q(songs__name__icontains=search_query) | \
-                Q(songs__romanji_name__icontains=search_query) | \
-                Q(songs__translated_name__icontains=search_query)
+                Q(streamtrack__song__name__icontains=search_query) | \
+                Q(streamtrack__song__romanji_name__icontains=search_query) | \
+                Q(streamtrack__song__translated_name__icontains=search_query)
             )
+            print(self.stream_song_results)
         except Exception as e:
             print(e)
+            self.stream_song_results = ''
         try:
             # Streams that match that result
             self.stream_results = Stream.objects.filter(
@@ -54,6 +75,7 @@ class SearchResultsView(TemplateView):
             )
         except Exception as e:
             print(e)
+            self.stream_results = ''
         try:
             # Songs that match that result
             self.song_results = Song.objects.filter(
@@ -65,6 +87,7 @@ class SearchResultsView(TemplateView):
             )
         except Exception as e:
             print(e)
+            self.song_results = ''
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -73,10 +96,11 @@ class SearchResultsView(TemplateView):
             stream_results=self.stream_results,
             song_results=self.song_results,
             **kwargs)
-        
+
 #######################################
 # STREAM VIEWS
 #######################################
+
 
 class StreamListView(ListView):
 
@@ -92,18 +116,21 @@ class StreamDetailView(DetailView):
     model = Stream
     context_object_name = 'stream'
 
+@method_decorator(login_required, name='dispatch')
 class StreamCreateView(CreateView):
 
     template_name = 'stream_create.html'
     model = Stream
     fields = '__all__'
 
+@method_decorator(login_required, name='dispatch')
 class StreamDeleteView(DeleteView):
 
     model = Stream
     success_url = reverse_lazy('archive:stream_list')
     template_name = 'stream_delete.html'
 
+@method_decorator(login_required, name='dispatch')
 class StreamUpdateView(UpdateView):
     model = Stream
     fields = '__all__'
@@ -151,6 +178,7 @@ class IdolDetailView(DetailView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class IdolCreateView(CreateView):
 
     template_name = 'idol_create.html'
@@ -158,12 +186,15 @@ class IdolCreateView(CreateView):
     fields = '__all__'
 
 
+@method_decorator(login_required, name='dispatch')
 class IdolDeleteView(DeleteView):
 
     model = Idol
     success_url = reverse_lazy('archive:idol_list')
     template_name = 'idol_delete.html'
 
+
+@method_decorator(login_required, name='dispatch')
 class IdolUpdateView(UpdateView):
 
     model = Idol
@@ -174,6 +205,12 @@ class IdolUpdateView(UpdateView):
 # SONG VIEWS
 #######################################
 
+class SongCreateView(CreateView):
+
+    model = Song
+    template_name = 'song_create.html'
+    fields = '__all__'
+
 class SongDetailView(DetailView):
 
     template_name = 'song_detail.html'
@@ -182,5 +219,5 @@ class SongDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['streams_with_song'] = Stream.objects.filter(Q(songs=self.kwargs['pk']))
+        context['streams_with_song'] = Stream.objects.filter(Q(streamtrack__song__id=self.kwargs['pk']))
         return context

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Stream, Idol, Song
+from .models import Stream, Idol, Song, StreamTrack
 
 # Register your models here.
 
@@ -12,3 +12,4 @@ class StreamAdmin(admin.ModelAdmin):
 
 admin.site.register(Idol)
 admin.site.register(Song)
+admin.site.register(StreamTrack)

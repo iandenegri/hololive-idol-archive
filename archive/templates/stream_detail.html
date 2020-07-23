@@ -8,8 +8,8 @@
 
 {% if not stream.original_song %}
     <h3>Song List:</h3>
-    {% for song in stream.songs.all %}
-        <p>{{ song.playlist_number }}. {{ song.name }} - {{ song.original_artist }}</p>
+    {% for track in stream.streamtrack_set.all %}
+        <p>{{ track.position }}. <a href="{% url 'archive:song_detail' track.song.id %}">{{ track.song.name }} - {{ track.song.original_artist }}</a></p>
     {% endfor %}
 {% endif %}
 

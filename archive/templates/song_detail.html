@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block body %}
 <h1>Hololive Singing Archive</h1>
-<p>{{ song.name }}</p>
-<p>{{ song.original_artist }}</p>
+<p>Song Title - {{ song.name }}</p>
+{% if song.romanji_name %}
+<p>Romanji Title - {{ song.romanji_name }}</p>
+{% endif %}
+<p>Artist - {{ song.original_artist }}</p>
 
 <h3>Streams that this song appears in:</h3>
 {% for stream in streams_with_song %}
-<li><a href="{% url 'archive:stream_detail' stream.id %}">{{ stream.name }}</a></li>
+    <li><a href="{% url 'archive:stream_detail' stream.id %}">{{ stream.singer }} - {{ stream.name }}</a></li>
 {% endfor %}
  
 {% endblock %}

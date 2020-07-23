@@ -1,14 +1,14 @@
 from django.urls import path
 
-from .views import StreamListView, StreamDetailView, StreamCreateView, StreamDeleteView, StreamUpdateView, \
-    HomeView, IdolListView, IdolDetailView, IdolCreateView, IdolDeleteView, IdolUpdateView, SearchResultsView, \
-    SongDetailView
+from .views import *
 
 app_name = 'archive'
 urlpatterns = [
     # GENERIC
     path('', HomeView.as_view(), name='index'),
     path('search/', SearchResultsView.as_view(), name='search_results'),
+    path('administration/login/', LoginUser.as_view(), name='admin_login'),
+    path('administration/logout/', LogoutUser.as_view(), name='admin_logout'),
     # STREAM
     path('stream/', StreamListView.as_view(), name='stream_list'),
     path('stream/create/', StreamCreateView.as_view(), name='stream_create'),
@@ -22,5 +22,6 @@ urlpatterns = [
     path('idol/<int:pk>/delete', IdolDeleteView.as_view(), name='idol_delete'),
     path('idol/<int:pk>/update', IdolUpdateView.as_view(), name='idol_update'),
     # SONG
+    path('song/create/', SongCreateView.as_view(), name='song_create'),
     path('song/<int:pk>/', SongDetailView.as_view(), name='song_detail'),
 ]

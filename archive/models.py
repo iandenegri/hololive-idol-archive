@@ -28,11 +28,12 @@ class Song(models.Model):
     translated_name = models.CharField(blank=True, null=True, max_length=264)
     original_artist = models.CharField(blank=True, null=True, max_length=264)
     romanji_original_artist = models.CharField(blank=True, null=True, max_length=264)
-    playlist_number = models.IntegerField(blank=True)
-
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('archive:song_detail', kwargs={'pk': self.pk})
 
 
 class Stream(models.Model):
@@ -41,7 +42,7 @@ class Stream(models.Model):
     guest_singers = models.ManyToManyField(to=Idol, blank=True, related_name='guest_singers')
     link = models.URLField(blank=True, unique=True)
     youtube_id = models.CharField(blank=True, unique=True, max_length=264)
-    songs = models.ManyToManyField(to=Song, blank=True)
+    songs = models.ManyToManyField(to=Song, through='StreamTrack', blank=True)
     date_posted = models.DateField(blank=True, null=True, default=timezone.now)
     original_song = models.BooleanField(default=False)
 
@@ -50,3 +51,14 @@ class Stream(models.Model):
 
     def get_absolute_url(self):
         return reverse('archive:stream_detail', kwargs={'pk': self.pk})
+
+class StreamTrack(models.Model):
+    stream = models.ForeignKey(to=Stream, on_delete=models.CASCADE)
+    song = models.ForeignKey(to=Song, on_delete=models.CASCADE)
+    position = models.IntegerField()
+
+    class Meta:
+        ordering = ['position']
+
+    def __str__(self):
+        return self.song.name + " - " + self.stream.name + " -  Song Number " + str(self.position)
