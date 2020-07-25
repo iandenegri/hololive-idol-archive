@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_&t#k0w-9^5rmceie8rm(s!=xx!jak=)5o=x_0s@zaov$75wai'
+SECRET_KEY = os.environ.get('SECRET_KEY') if os.environ.get('SECRET_KEY') else 'TH1SNEED5T0BEREPLAC3D'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG") if os.environ.get("DEBUG") else True
 
 ALLOWED_HOSTS = []
 
@@ -70,6 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'holoidol_archive.wsgi.application'
 
+LOGOUT_REDIRECT_URL = 'archive:index'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases

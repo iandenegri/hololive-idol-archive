@@ -9,6 +9,7 @@ urlpatterns = [
     path('search/', SearchResultsView.as_view(), name='search_results'),
     path('administration/login/', LoginUser.as_view(), name='admin_login'),
     path('administration/logout/', LogoutUser.as_view(), name='admin_logout'),
+    path('about/', AboutView.as_view(), name='about'),
     # STREAM
     path('stream/', StreamListView.as_view(), name='stream_list'),
     path('stream/create/', StreamCreateView.as_view(), name='stream_create'),

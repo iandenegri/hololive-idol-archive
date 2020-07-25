@@ -17,7 +17,7 @@ from .models import Stream, Idol, Song
 # Third Party
 from googleapiclient.discovery import build
 
-youtube_api_key = os.environ.get('YOUTUBE_KEY', 'replace me')
+youtube_api_key = os.environ.get("YOUTUBE_KEY", "you need a youtube api key")
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 # Create your views here.
@@ -29,7 +29,8 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_streams'] = Stream.objects.all().order_by('pk')[:5]
+        context['latest_streams'] = Stream.objects.all()
+        print(context)
         return context
 
 
@@ -43,10 +44,13 @@ class LoginUser(LoginView):
 
 class LogoutUser(LogoutView):
     
-    # template_name = 'login.html'  # your template
-
     def get_success_url(self):
         return reverse_lazy('archive:index')
+
+
+class AboutView(TemplateView):
+
+    template_name = 'about.html'
 
 
 class SearchResultsView(TemplateView):

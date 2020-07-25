@@ -1,10 +1,49 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block body %}
-<h1>Hololive Singing Archive</h1>
+<div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner embed-responsive-21by9">
+    <div class="carousel-item active">
+      <iframe class="embed-responsive-item" width="100%" height="100%" src="https://www.youtube.com/embed/{{ latest_streams.0.youtube_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="carousel-item">
+      <iframe class="embed-responsive-item" width="100%" height="100%" src="https://www.youtube.com/embed/{{ latest_streams.1.youtube_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="carousel-item">
+      <iframe class="embed-responsive-item" width="100%" height="100%" src="https://www.youtube.com/embed/{{ latest_streams.2.youtube_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
 <div class="container">
-    <div class="jumbotron">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/9kQ2GtvDV3s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="jumbotron jumbotron-fluid p-0">
+    <div class="view overlay rounded-top">
+      <img src="https://vignette.wikia.nocookie.net/virtualyoutuber/images/d/db/Hololive_1st_fes._Nonstop_Story_02.png/revision/latest?cb=20191227205403" class="img-fluid" alt="Sample image">
+      <a href="#">
+        <div class="mask rgba-white-slight"></div>
+      </a>
     </div>
+    <div class="container">
+      <h2 class="display-4">Hololive Idol Archive Project</h2>
+      <p class="lead">This is a quick and simple site used to archive the rare instances where the Hololive Idols are actually being... idols.</p>
+      <hr class="my-4">
+      <p>Videos archived come directly from their channels and support them directly!</p>
+      <a class="btn btn-primary btn-lg mb-3" href="{% url 'archive:stream_list' %}" role="button">Learn more</a>
+    </div>
+  </div>
 </div>
+
 {% endblock %}
