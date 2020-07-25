@@ -1,0 +1,32 @@
+[
+{
+  "model": "archive.idol",
+  "pk": 1,
+  "fields": {
+    "name": "Suisei Hoshimachi",
+    "jp_name": "\u661f\u8857\u3059\u3044\u305b\u3044",
+    "channel": "https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A",
+    "channel_id": "UC5CwaMl1eIgY8h02uZw7u8A"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 2,
+  "fields": {
+    "name": "Korone Inugami",
+    "jp_name": "\u620c\u795e\u3053\u308d\u306d",
+    "channel": "https://www.youtube.com/channel/UChAnqc_AY5_I3Px5dig3X1Q",
+    "channel_id": "UChAnqc_AY5_I3Px5dig3X1Q"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 3,
+  "fields": {
+    "name": "Okayu Nekomata",
+    "jp_name": "\u732b\u53c8\u304a\u304b\u3086",
+    "channel": "https://www.youtube.com/channel/UCvaTdHTWBGv3MKj3KVqJVCw",
+    "channel_id": "UCvaTdHTWBGv3MKj3KVqJVCw"
+  }
+}
+]

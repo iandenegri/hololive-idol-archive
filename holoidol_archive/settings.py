@@ -84,7 +84,7 @@ DATABASES = {
 }
 
 # Location of fixtures (for django-smuggler)
-SMUGGLER_FIXTURE_DIR = str(BASE_DIR + ('data/fixtures'))
+SMUGGLER_FIXTURE_DIR = str(BASE_DIR + ('/data/fixtures'))
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
