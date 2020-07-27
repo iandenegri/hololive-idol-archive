@@ -5,8 +5,11 @@
 <p><img src="{{ idol.thumbnail}}" alt=""></p>
 
 <h2>Streams By {{ idol.name }}</h2>
-{% for stream in idol.stream_set.all %}
- <li><a href="{% url 'archive:stream_detail' stream.id %}">{{ stream.name }}</a></li>
-{% endfor %}
+<ol>
+    {% for stream in idol.stream_set.all %}
+    <li><a href="{% url 'archive:stream_detail' stream.id %}">{{ stream.name }}</a></li>
+   {% endfor %}
+</ol>
+
  
 {% endblock %}

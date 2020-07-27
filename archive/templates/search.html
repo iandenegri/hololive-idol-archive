@@ -8,11 +8,11 @@
     <ul>
         <h3>Streams With that Song In Their Tracklist:</h3>
         {% for result in stream_song_results %}
-            <li><a href="{{ result.get_absolute_url }}">{{ result }}</a></li>
+            <li><img width=350 src="{{ result.thumbnail }}" class="pr-2"><a href="{{ result.get_absolute_url }}">{{ result }}</a></li>
         {% endfor %}
         <h3>Streams You Might Be Looking for:</h3>
         {% for result in stream_results %}
-            <li><a href="{{ result.get_absolute_url }}">{{ result }}</a></li>
+            <li><img width=250 src="{{ result.thumbnail }}" class="pr-2"><a href="{{ result.get_absolute_url }}">{{ result }}</a></li>
         {% endfor %}
         <h3>Songs Matching That Query:</h3>
         {% for result in song_results %}

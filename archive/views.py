@@ -29,7 +29,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_streams'] = Stream.objects.all()
+        context['latest_streams'] = Stream.objects.order_by('-date_posted')[:3]
         print(context)
         return context
 

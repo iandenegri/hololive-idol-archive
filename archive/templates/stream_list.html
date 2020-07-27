@@ -2,7 +2,7 @@
 {% block body %}
 <div class="container">
 
-    <ul class="list-group pt-5">
+    <ul class="list-group pt-5 pb-3">
     <li class="list-group-item active"><h3 class="text-center">List of streams from newest to oldest.</h3></li>
     {% for stream in stream_list %}
         <li class="list-group-item"><img width=350 src="{{ stream.thumbnail }}" class="pr-2"><a href="{% url 'archive:stream_detail' stream.id %}">{{ stream.name }}</a></a></li>
@@ -10,8 +10,8 @@
         <li>No streams recorded yet.</li>
     {% endfor %}
     </ul>
-    
-    {% if page_obj.has_previous or page_obj.has_next %}
+    <div class="text-center">
+        {% if page_obj.has_previous or page_obj.has_next %}
         {% if page_obj.has_previous %}
         <a href="?page=1">&laquo; first</a>
         <a href="?page={{ page_obj.previous_page_number }}">previous</a>
@@ -25,6 +25,8 @@
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     {% endif %}
+    </div>
+
         
 </div>
 
