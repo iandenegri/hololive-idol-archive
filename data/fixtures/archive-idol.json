@@ -6,7 +6,8 @@
     "name": "Suisei Hoshimachi",
     "jp_name": "\u661f\u8857\u3059\u3044\u305b\u3044",
     "channel": "https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A",
-    "channel_id": "UC5CwaMl1eIgY8h02uZw7u8A"
+    "channel_id": "UC5CwaMl1eIgY8h02uZw7u8A",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJzbRjSTNu3QQ7pia2yR5oVTcds7MpmeA3a1xE-h=s240-c-k-c0xffffffff-no-rj-mo"
   }
 },
 {
@@ -16,7 +17,8 @@
     "name": "Korone Inugami",
     "jp_name": "\u620c\u795e\u3053\u308d\u306d",
     "channel": "https://www.youtube.com/channel/UChAnqc_AY5_I3Px5dig3X1Q",
-    "channel_id": "UChAnqc_AY5_I3Px5dig3X1Q"
+    "channel_id": "UChAnqc_AY5_I3Px5dig3X1Q",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJyvWtmcbmGiE0e1m316wI0MJN6-hGWxjhGZeCWhFA=s240-c-k-c0xffffffff-no-rj-mo"
   }
 },
 {
@@ -26,7 +28,195 @@
     "name": "Okayu Nekomata",
     "jp_name": "\u732b\u53c8\u304a\u304b\u3086",
     "channel": "https://www.youtube.com/channel/UCvaTdHTWBGv3MKj3KVqJVCw",
-    "channel_id": "UCvaTdHTWBGv3MKj3KVqJVCw"
+    "channel_id": "UCvaTdHTWBGv3MKj3KVqJVCw",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJxiB3oU3X4_wTHHAay43njgJgzw-2qKPeYIjDH2=s240-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 4,
+  "fields": {
+    "name": "Shion Murasaki",
+    "jp_name": "\u7d2b\u54b2\u30b7\u30aa\u30f3",
+    "channel": "https://www.youtube.com/channel/UCXTpFs_3PqI41qX2d9tL2Rw",
+    "channel_id": "UCXTpFs_3PqI41qX2d9tL2Rw",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJx2dQl8H1TG2HBy9bMCMP-nHxOVXALwAJz8MFS_rA=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 5,
+  "fields": {
+    "name": "Aqua Minato",
+    "jp_name": "\u6e4a\u3042\u304f\u3042",
+    "channel": "https://www.youtube.com/channel/UC1opHUrw8rvnsadT-iGp7Cg",
+    "channel_id": "UC1opHUrw8rvnsadT-iGp7Cg",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJxXeCPuSGxq-_NfKX4WSpCf7FtnOkPNzHd2s9Sh9g=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 6,
+  "fields": {
+    "name": "Sora Tokino",
+    "jp_name": "\u3068\u304d\u306e\u305d\u3089",
+    "channel": "https://www.youtube.com/channel/UCp6993wxpyDPHUpavwDFqgg",
+    "channel_id": "UCp6993wxpyDPHUpavwDFqgg",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJxvfkV0UikqTA-yx4opKjGB36TXtUG9jLX1PO1FOQ=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 7,
+  "fields": {
+    "name": "Haato Akai",
+    "jp_name": "\u8d64\u4e95\u306f\u3042\u3068",
+    "channel": "https://www.youtube.com/channel/UC1CfXB_kRs3C-zaeTG3oGyg",
+    "channel_id": "UC1CfXB_kRs3C-zaeTG3oGyg",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJw3IoOJZlLAn_Eyy0r6gJHR3vt64XHfuXCailaCPw=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 8,
+  "fields": {
+    "name": "Luna Himemori",
+    "jp_name": "\u59eb\u68ee\u30eb\u30fc\u30ca",
+    "channel": "https://www.youtube.com/channel/UCa9Y57gfeY0Zro_noHRVrnw",
+    "channel_id": "UCa9Y57gfeY0Zro_noHRVrnw",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJzKYMVgjGOC0-yLuJs8TidP_YB3Yks6VmDI0pgo=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 9,
+  "fields": {
+    "name": "Marine Senchou",
+    "jp_name": "\u5b9d\u9418\u30de\u30ea\u30f3",
+    "channel": "https://www.youtube.com/channel/UCCzUftO8KOVkV4wQG1vkUvg",
+    "channel_id": "UCCzUftO8KOVkV4wQG1vkUvg",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJwYqS3nyqxwpdS648kU__gLHK_MTbEf8ojGdx0j=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 10,
+  "fields": {
+    "name": "Roboco San",
+    "jp_name": "\u30ed\u30dc\u5b50\u3055\u3093",
+    "channel": "https://www.youtube.com/channel/UCDqI2jOz0weumE8s7paEk6g",
+    "channel_id": "UCDqI2jOz0weumE8s7paEk6g",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJzYPiWlodo92FUP3QjgI9Y0j7sQ45p0M0AruWbj9w=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 11,
+  "fields": {
+    "name": "Flare Shiranui",
+    "jp_name": "\u4e0d\u77e5\u706b\u30d5\u30ec\u30a2",
+    "channel": "https://www.youtube.com/channel/UCvInZx9h3jC2JzsIzoOebWg",
+    "channel_id": "UCvInZx9h3jC2JzsIzoOebWg",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJwGmRMcFMvE1JW3v152HnrXfMQxbI_Dw92KH0-CpA=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 12,
+  "fields": {
+    "name": "Miko Sakura",
+    "jp_name": "\u3055\u304f\u3089\u307f\u3053",
+    "channel": "https://www.youtube.com/channel/UC-hM6YJuNYVAmUWxeIr9FeA",
+    "channel_id": "UC-hM6YJuNYVAmUWxeIr9FeA",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJzQGThlJwOBuSi3n5dnysKb9GHV_qsFF1_OoluPAw=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 13,
+  "fields": {
+    "name": "Fubuki Shirakami",
+    "jp_name": "\u767d\u4e0a\u30d5\u30d6\u30ad",
+    "channel": "https://www.youtube.com/channel/UCdn5BQ06XqgXoAxIhbqw5Rg",
+    "channel_id": "UCdn5BQ06XqgXoAxIhbqw5Rg",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJztvRXzNX8UtsaUZfLLBh32VBBwNPcvy_TklUjnWA=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 14,
+  "fields": {
+    "name": "AZKi",
+    "jp_name": null,
+    "channel": "https://www.youtube.com/channel/UC0TXe_LYZ4scaW2XMyi5_kw",
+    "channel_id": "UC0TXe_LYZ4scaW2XMyi5_kw",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJz2wM8qDGZZDt9Uedg6AEznFZPi85WPgtkjP6-n=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 15,
+  "fields": {
+    "name": "Matsuri Natsuiro",
+    "jp_name": "\u590f\u8272\u307e\u3064\u308a",
+    "channel": "https://www.youtube.com/channel/UCQ0UDLQCjY0rmuxCDE38FGg",
+    "channel_id": "UCQ0UDLQCjY0rmuxCDE38FGg",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJw8RXWyEofFZFI5EwEb7lXDq3Cm6l0SThQxT9XG=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 16,
+  "fields": {
+    "name": "Watame Tsunomake",
+    "jp_name": "\u89d2\u5dfb\u308f\u305f\u3081",
+    "channel": "https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA",
+    "channel_id": "UCqm3BQLlJfvkTsX_hvm0UmA",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJzqZYR2ukuLZqCDgdsg9eid13borfDPzVBwTIDc=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 17,
+  "fields": {
+    "name": "Mel Yozora",
+    "jp_name": "\u591c\u7a7a\u30e1\u30eb",
+    "channel": "https://www.youtube.com/channel/UCD8HOxPs4Xvsm8H0ZxXGiBw",
+    "channel_id": "UCD8HOxPs4Xvsm8H0ZxXGiBw",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJxGYXGi2fgjHoYCSuqLzsh6p-CrlNvRTRFmZmK_=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 18,
+  "fields": {
+    "name": "Rushia Uraha",
+    "jp_name": "\u6f64\u7fbd\u308b\u3057\u3042",
+    "channel": "https://www.youtube.com/channel/UCl_gCybOJRIgOXw6Qb4qJzQ",
+    "channel_id": "UCl_gCybOJRIgOXw6Qb4qJzQ",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJwi-Xs0ChOThMuUzFsl3cNZYgdP12Witb0cNSf9=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 19,
+  "fields": {
+    "name": "Aki Rosenthal",
+    "jp_name": "\u30a2\u30ad\u30fb\u30ed\u30fc\u30bc\u30f3\u30bf\u30fc\u30eb",
+    "channel": "https://www.youtube.com/channel/UCFTLzh12_nrtzqBPsTCqenA",
+    "channel_id": "UCFTLzh12_nrtzqBPsTCqenA",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJz-Y3lEysu2wkT7AdTaPU77l938jwf2p2r8hi7e=s800-c-k-c0xffffffff-no-rj-mo"
+  }
+},
+{
+  "model": "archive.idol",
+  "pk": 20,
+  "fields": {
+    "name": "Kanata Amane",
+    "jp_name": "\u5929\u97f3\u304b\u306a\u305f",
+    "channel": "https://www.youtube.com/channel/UCZlDXzGoo7d44bwdNObFacg",
+    "channel_id": "UCZlDXzGoo7d44bwdNObFacg",
+    "thumbnail": "https://yt3.ggpht.com/a/AATXAJwu4OylyCnOP8gGbO8hINCbwCfPzhBY5JrS0htm=s800-c-k-c0xffffffff-no-rj-mo"
   }
 }
 ]

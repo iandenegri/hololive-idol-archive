@@ -15,6 +15,8 @@ class Idol(models.Model):
     channel = models.URLField(blank=True, unique=True)
     channel_id = models.CharField(blank=True, unique=True, max_length=264)
 
+    thumbnail = models.URLField(null=True, blank=True)
+
     def __str__(self):
         return self.name
 
@@ -45,12 +47,14 @@ class Stream(models.Model):
     songs = models.ManyToManyField(to=Song, through='StreamTrack', blank=True)
     date_posted = models.DateField(blank=True, null=True, default=timezone.now)
     original_song = models.BooleanField(default=False)
+    thumbnail = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('archive:stream_detail', kwargs={'pk': self.pk})
+        
 
 class StreamTrack(models.Model):
     stream = models.ForeignKey(to=Stream, on_delete=models.CASCADE)

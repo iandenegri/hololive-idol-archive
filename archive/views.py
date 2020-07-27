@@ -120,12 +120,37 @@ class StreamDetailView(DetailView):
     model = Stream
     context_object_name = 'stream'
 
+    def get_object(self):
+        obj = super().get_object()
+        print(obj)
+        if obj.thumbnail:
+            print("This stream already has a thumbnail, don't fetch.")
+            pass
+        else:
+            print('doing the thing')
+            try:
+                youtube = build('youtube', 'v3', developerKey=youtube_api_key)
+
+                request = youtube.videos().list(
+                part="snippet,contentDetails,statistics",
+                id=obj.youtube_id
+                )
+                response = request.execute()
+                obj.thumbnail = response['items'][0]['snippet']['thumbnails']['high']['url']
+            except Exception as e:
+                print(e)
+                obj.thumbnail = 'https://pbs.twimg.com/profile_images/1186979284319006720/gH6xdlYB_400x400.jpg'
+            obj.save()
+        return obj
+
+
 @method_decorator(login_required, name='dispatch')
 class StreamCreateView(CreateView):
 
     template_name = 'stream_create.html'
     model = Stream
     fields = '__all__'
+
 
 @method_decorator(login_required, name='dispatch')
 class StreamDeleteView(DeleteView):
@@ -134,15 +159,18 @@ class StreamDeleteView(DeleteView):
     success_url = reverse_lazy('archive:stream_list')
     template_name = 'stream_delete.html'
 
+
 @method_decorator(login_required, name='dispatch')
 class StreamUpdateView(UpdateView):
     model = Stream
     fields = '__all__'
     template_name = 'stream_update.html'
 
+
 #######################################
 # IDOL VIEWS
 #######################################
+
 
 class IdolListView(ListView):
 
@@ -159,27 +187,27 @@ class IdolDetailView(DetailView):
     model = Idol
     context_object_name = 'idol'
 
-    def get_context_data(self, **kwargs):
-        idol_to_look_up = Idol.objects.get(pk=self.kwargs['pk'])
-        try:
-            youtube = build('youtube', 'v3', developerKey=youtube_api_key)
+    def get_object(self):
+        obj = super().get_object()
+        print(obj)
+        if obj.thumbnail:
+            print("This stream already has a thumbnail, don't fetch.")
+            pass
+        else:
+            try:
+                youtube = build('youtube', 'v3', developerKey=youtube_api_key)
 
-            request = youtube.channels().list(
-                part="snippet,contentDetails,statistics",
-                id=idol_to_look_up.channel_id
-            )
-            response = request.execute()
-
-            context = super().get_context_data(**kwargs)
-
-            context['subscribers'] = response['items'][0]['statistics']['subscriberCount']
-            context['thumbnail_url'] = response['items'][0]['snippet']['thumbnails']['high']['url']
-        except Exception as e:
-            print(e)
-            context['subscribers'] = 'N/A'
-            context['thumbnail_url'] = 'https://pbs.twimg.com/profile_images/1186979284319006720/gH6xdlYB_400x400.jpg'
-
-        return context
+                request = youtube.channels().list(
+                    part="snippet,contentDetails,statistics",
+                    id=obj.channel_id
+                )
+                response = request.execute()
+                obj.thumbnail = response['items'][0]['snippet']['thumbnails']['high']['url']
+            except Exception as e:
+                print(e)
+                obj.thumbnail = 'https://pbs.twimg.com/profile_images/1186979284319006720/gH6xdlYB_400x400.jpg'
+            obj.save()
+        return obj
 
 
 @method_decorator(login_required, name='dispatch')
@@ -205,15 +233,18 @@ class IdolUpdateView(UpdateView):
     fields = '__all__'
     template_name = 'idol_update.html'
 
+
 #######################################
 # SONG VIEWS
 #######################################
+
 
 class SongCreateView(CreateView):
 
     model = Song
     template_name = 'song_create.html'
     fields = '__all__'
+
 
 class SongDetailView(DetailView):
 

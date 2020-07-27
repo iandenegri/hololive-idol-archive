@@ -2,8 +2,7 @@
 {% block body %}
 <h1>Hololive Singing Archive</h1>
 <p>{{ idol.name }}</p>
-<p>{{ subscribers }}</p>
-<p><img src="{{ thumbnail_url}}" alt=""></p>
+<p><img src="{{ idol.thumbnail}}" alt=""></p>
 
 <h2>Streams By {{ idol.name }}</h2>
 {% for stream in idol.stream_set.all %}
