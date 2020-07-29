@@ -10,7 +10,7 @@
     
     <h3>Streams that this song appears in:</h3>
     {% for stream in streams_with_song %}
-        <li><a href="{% url 'archive:stream_detail' stream.id %}">{{ stream.singer }} - {{ stream.name }}</a></li>
+        <li><a href="{% url 'archive:stream_detail' stream.slug %}">{{ stream.singer }} - {{ stream.name }}</a></li>
     {% endfor %}
 </div>
  

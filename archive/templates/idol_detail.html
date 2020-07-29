@@ -16,7 +16,7 @@
                 <ul class="list-group">
                     {% for stream in idol.stream_set.all %}
                     <li class="list-group-item">
-                        <a href="{% url 'archive:stream_detail' stream.id %}" >
+                        <a href="{% url 'archive:stream_detail' stream.slug %}" >
                             <img width=200 src="{{ stream.thumbnail }}" class="float-left pr-2">
                             {{ stream.name }}
                         </a>
@@ -27,7 +27,7 @@
                 <ul class="list-group">
                     {% for stream in idol.guest_singers.all %}
                     <li class="list-group-item">
-                        <a href="{% url 'archive:stream_detail' stream.id %}" >
+                        <a href="{% url 'archive:stream_detail' stream.slug %}" >
                             <img width=200 src="{{ stream.thumbnail }}" class="float-left pr-2">
                             {{ stream.name }}
                         </a>
@@ -37,6 +37,8 @@
             </div>
         </div>
     </div>
+    {% if user.is_authenticated %}
+    <a href="{% url 'archive:idol_update' idol.id %}">Update Idol</a>
+    {% endif %}
 </div>
- 
 {% endblock %}

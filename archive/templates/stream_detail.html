@@ -5,9 +5,9 @@
         <div class="row pb-3">
             <div class="col-lg-4">
                 <div class="pt-3" id="idol-about">
-                    <h1><a href="{{ stream.link }}">{{ stream.name }}</a></h1>
+                    <h2><a href="{{ stream.link }}">{{ stream.name }}</a></h1>
                     <h3><a href="{% url 'archive:idol_detail' stream.singer.id %}">{{ stream.singer.name }}</a></h3>
-                    <h4>Original Stream Date: {{ stream.date_posted }}</h4>
+                    <h4>Upload Date: {{ stream.date_posted }}</h4>
                 </div>
             </div>
             <div class="col-lg-8">
@@ -32,7 +32,7 @@
         
         {% if request.user.is_authenticated %}
         <h4>For Admins...</h4>
-        <a href="{% url 'archive:stream_update' stream.id %}">Update Stream Information</a>
+        <a href="{% url 'archive:stream_update' stream.slug %}">Update Stream Information</a>
         {% endif %}
     </div>
 </div>

@@ -3,6 +3,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from django.utils.text import slugify
 
 now = timezone.now()
 
@@ -48,12 +49,18 @@ class Stream(models.Model):
     date_posted = models.DateField(blank=True, null=True, default=timezone.now)
     original_song = models.BooleanField(default=False)
     thumbnail = models.URLField(null=True, blank=True)
+    slug = models.SlugField(unique=True)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.youtube_id)
+        super(Stream, self).save(*args, **kwargs)
+
     def get_absolute_url(self):
-        return reverse('archive:stream_detail', kwargs={'pk': self.pk})
+        return reverse('archive:stream_detail', kwargs={'slug': self.slug})
         
 
 class StreamTrack(models.Model):
