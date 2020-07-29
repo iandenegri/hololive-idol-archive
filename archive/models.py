@@ -60,9 +60,16 @@ class StreamTrack(models.Model):
     stream = models.ForeignKey(to=Stream, on_delete=models.CASCADE)
     song = models.ForeignKey(to=Song, on_delete=models.CASCADE)
     position = models.IntegerField()
+    timestamp = models.IntegerField(null=True, blank=True, help_text="This is the point in seconds at which this song occurs in a stream.")
 
     class Meta:
         ordering = ['position']
 
     def __str__(self):
         return self.song.name + " - " + self.stream.name + " -  Song Number " + str(self.position)
+
+    def convert_seconds_to_timestamp(self):
+        if self.timestamp:
+            return str(datetime.timedelta(seconds=self.timestamp))
+        else:
+            return ''

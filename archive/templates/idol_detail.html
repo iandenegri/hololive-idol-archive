@@ -1,15 +1,42 @@
 {% extends 'base.html' %}
 {% block body %}
-<h1>Hololive Singing Archive</h1>
-<p>{{ idol.name }}</p>
-<p><img src="{{ idol.thumbnail}}" alt=""></p>
 
-<h2>Streams By {{ idol.name }}</h2>
-<ol>
-    {% for stream in idol.stream_set.all %}
-    <li><a href="{% url 'archive:stream_detail' stream.id %}">{{ stream.name }}</a></li>
-   {% endfor %}
-</ol>
-
+<div class="container">
+    <div class="card mt-5">
+        <div class="row m-0">
+            <div class="col-lg-3 bg-light">
+                <p class="text-center pt-4">
+                    <img width=250 src="{{ idol.thumbnail}}" alt="{{ idol.name }}'s YouTube Thumbnail">
+                </p>
+                <h2 class="card-title text-center">{{ idol.name }}</h2>
+                <h6 class="card-subtitle mb-2 text-muted">Hololive Generation Information</h6>
+            </div>
+            <div class="col-lg-8 m-3">
+                <h3 class="text-center">Streams/Covers By {{ idol.name }}</h2>
+                <ul class="list-group">
+                    {% for stream in idol.stream_set.all %}
+                    <li class="list-group-item">
+                        <a href="{% url 'archive:stream_detail' stream.id %}" >
+                            <img width=200 src="{{ stream.thumbnail }}" class="float-left pr-2">
+                            {{ stream.name }}
+                        </a>
+                    </li>
+                   {% endfor %}
+                </ul>
+                <h3 class="text-center ">Guest Starring in these Streams (TODO)</h2>
+                <ul class="list-group">
+                    {% for stream in idol.guest_singers.all %}
+                    <li class="list-group-item">
+                        <a href="{% url 'archive:stream_detail' stream.id %}" >
+                            <img width=200 src="{{ stream.thumbnail }}" class="float-left pr-2">
+                            {{ stream.name }}
+                        </a>
+                    </li>
+                   {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
  
 {% endblock %}
