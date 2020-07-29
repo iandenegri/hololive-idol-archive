@@ -59,6 +59,11 @@ class SearchResultsView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         search_query = request.GET.get('q')
+        if search_query == '':
+            self.stream_song_results = ''
+            self.stream_results = ''
+            self.song_results = ''
+            return super().get(request, *args, **kwargs)
         try:
             # Streams containing songs that match that result
             self.stream_song_results = Stream.objects.filter(

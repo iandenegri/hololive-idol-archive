@@ -38,6 +38,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'archive:stream_create' %}">Add New Stream</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'archive:song_create' %}">Add New Song</a>
+          </li>
         {% endif %}
       </ul>
       <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'archive:search_results' %}">
