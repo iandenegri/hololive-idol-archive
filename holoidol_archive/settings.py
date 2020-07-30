@@ -146,10 +146,11 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID') if os.environ.get('AWS_A
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY') if os.environ.get('AWS_SECRET_ACCESS_KEY') else False
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME') if os.environ.get('AWS_STORAGE_BUCKET_NAME') else False
 
-AWS_S3_FILE_OVERWRITE = True # So you can upload resumes with the same file name and overwrite your old one.
+AWS_S3_FILE_OVERWRITE = True
 AWS_S3_REGION_NAME = 'us-east-2'
 AWS_S3_HOST = 's3.us-east-2.amazonaws.com'
 AWS_DEFAULT_ACL = None
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 ##########################
@@ -158,4 +159,4 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Configure Django App for Heroku.
 import django_heroku
-django_heroku.settings(locals())
+django_heroku.settings(locals(), staticfiles=False)
