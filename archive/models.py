@@ -15,14 +15,19 @@ class Idol(models.Model):
     jp_name = models.CharField(blank=True, null=True, max_length=264)
     channel = models.URLField(blank=True, unique=True)
     channel_id = models.CharField(blank=True, unique=True, max_length=264)
+    slug = models.SlugField()
 
     thumbnail = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Idol, self).save(*args, **kwargs)
+
     def get_absolute_url(self):
-        return reverse('archive:idol_detail', kwargs={'pk': self.pk})
+        return reverse('archive:idol_detail', kwargs={'slug': self.slug})
 
 
 class Song(models.Model):

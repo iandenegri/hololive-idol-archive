@@ -70,7 +70,7 @@ class SearchResultsView(TemplateView):
                 Q(streamtrack__song__name__icontains=search_query) | \
                 Q(streamtrack__song__romanji_name__icontains=search_query) | \
                 Q(streamtrack__song__translated_name__icontains=search_query)
-            )
+            )[:5]
             print(self.stream_song_results)
         except Exception as e:
             print(e)
@@ -81,7 +81,7 @@ class SearchResultsView(TemplateView):
                 Q(name__icontains=search_query) | \
                 Q(singer__name__icontains=search_query) | \
                 Q(singer__jp_name__icontains=search_query)
-            )
+            )[:5]
         except Exception as e:
             print(e)
             self.stream_results = ''
@@ -93,7 +93,7 @@ class SearchResultsView(TemplateView):
                 Q(translated_name__icontains=search_query) | \
                 Q(original_artist__icontains=search_query) | \
                 Q(romanji_original_artist__icontains=search_query)
-            )
+            )[:5]
         except Exception as e:
             print(e)
             self.song_results = ''
@@ -118,6 +118,9 @@ class StreamListView(ListView):
     context_object_name = 'stream_list'
     paginate_by = 10
     ordering = ['-date_posted']
+
+    def get_queryset(self):
+        return Stream.objects.filter(active=True).order_by('-date_posted')
 
 class StreamDetailView(DetailView):
 

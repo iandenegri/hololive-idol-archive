@@ -19,9 +19,9 @@ urlpatterns = [
     # IDOL
     path('idol/', IdolListView.as_view(), name='idol_list'),
     path('idol/create/', IdolCreateView.as_view(), name='idol_create'),
-    path('idol/<int:pk>/', IdolDetailView.as_view(), name='idol_detail'),
-    path('idol/<int:pk>/delete', IdolDeleteView.as_view(), name='idol_delete'),
-    path('idol/<int:pk>/update', IdolUpdateView.as_view(), name='idol_update'),
+    path('idol/<slug>/', IdolDetailView.as_view(), name='idol_detail'),
+    path('idol/<slug>/delete', IdolDeleteView.as_view(), name='idol_delete'),
+    path('idol/<slug>/update', IdolUpdateView.as_view(), name='idol_update'),
     # SONG
     path('song/create/', SongCreateView.as_view(), name='song_create'),
     path('song/<int:pk>/', SongDetailView.as_view(), name='song_detail'),
