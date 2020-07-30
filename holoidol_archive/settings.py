@@ -24,6 +24,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY') if os.environ.get('SECRET_KEY') else '
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG") if os.environ.get("DEBUG") else True
+LOCAL = os.environ.get("LOCAL") if os.environ.get("LOCAL") else True
 
 ALLOWED_HOSTS = []
 
@@ -37,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # My apps
     'archive',
+    # Third party
     'smuggler',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -75,13 +79,24 @@ LOGOUT_REDIRECT_URL = 'archive:index'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if LOCAL:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ.get('HOLO_DB_NAME'),
+            'USER': os.environ.get('HOLO_DB_USER'),
+            'HOST': os.environ.get('HOLO_DB_HOST'),
+            'PORT': os.environ.get('HOLO_DB_PORT'),
+            'PASSWORD': os.environ.get('HOLO_DB_PWD'),
+        }
+    }
 
 # Location of fixtures (for django-smuggler)
 SMUGGLER_FIXTURE_DIR = str(BASE_DIR + ('/data/fixtures'))
@@ -123,3 +138,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media") 
+MEDIA_URL = "/media/"
