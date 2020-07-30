@@ -24,5 +24,5 @@ urlpatterns = [
     path('idol/<slug>/update', IdolUpdateView.as_view(), name='idol_update'),
     # SONG
     path('song/create/', SongCreateView.as_view(), name='song_create'),
-    path('song/<int:pk>/', SongDetailView.as_view(), name='song_detail'),
+    path('song/<str:slug>/', SongDetailView.as_view(), name='song_detail'),
 ]

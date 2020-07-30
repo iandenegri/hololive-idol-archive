@@ -23,7 +23,7 @@ class Idol(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        self.slug = slugify(self.name, allow_unicode=True)
         super(Idol, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -31,17 +31,24 @@ class Idol(models.Model):
 
 
 class Song(models.Model):
-    name = models.CharField(blank=False, null=False, max_length=264)
+    name = models.CharField(blank=False, max_length=264)
     romanji_name = models.CharField(blank=True, null=True, max_length=264)
     translated_name = models.CharField(blank=True, null=True, max_length=264)
     original_artist = models.CharField(blank=True, null=True, max_length=264)
     romanji_original_artist = models.CharField(blank=True, null=True, max_length=264)
 
+    slug = models.SlugField()
+
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name, allow_unicode=True)
+        print(self.slug)
+        super(Song, self).save(*args, **kwargs)
+
     def get_absolute_url(self):
-        return reverse('archive:song_detail', kwargs={'pk': self.pk})
+        return reverse('archive:song_detail', kwargs={'slug': self.slug})
 
 
 class Stream(models.Model):
