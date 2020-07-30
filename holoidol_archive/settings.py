@@ -137,6 +137,11 @@ USE_TZ = True
 # AWS Media Storage
 ##########################
 
+STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media") 
+MEDIA_URL = "/media/"
+
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID') if os.environ.get('AWS_ACCESS_KEY_ID') else False
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY') if os.environ.get('AWS_SECRET_ACCESS_KEY') else False
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME') if os.environ.get('AWS_STORAGE_BUCKET_NAME') else False
