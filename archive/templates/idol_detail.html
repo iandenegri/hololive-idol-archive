@@ -15,12 +15,14 @@
                 <h3 class="text-center">Streams/Covers By {{ idol.name }}</h2>
                 <ul class="list-group">
                     {% for stream in idol.stream_set.all %}
-                    <li class="list-group-item">
-                        <a href="{{ stream.get_absolute_url }}" >
-                            <img width=200 src="{{ stream.thumbnail }}" class="float-left pr-2">
-                            {{ stream.name }}
-                        </a>
-                    </li>
+                        {% if stream.active %}
+                            <li class="list-group-item">
+                                <a href="{{ stream.get_absolute_url }}" >
+                                    <img width=200 src="{{ stream.thumbnail }}" class="float-left pr-2">
+                                    {{ stream.name }}
+                                </a>
+                            </li>
+                        {% endif %}
                    {% endfor %}
                 </ul>
                 <h3 class="text-center ">Guest Starring in these Streams (TODO)</h2>

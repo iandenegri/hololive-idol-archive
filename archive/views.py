@@ -130,7 +130,6 @@ class StreamDetailView(DetailView):
 
     def get_object(self):
         obj = super().get_object()
-        print(obj)
         if obj.thumbnail:
             print("This stream already has a thumbnail, don't fetch.")
             pass
