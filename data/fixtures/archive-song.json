@@ -1,0 +1,50 @@
+[
+{
+  "model": "archive.song",
+  "pk": 1,
+  "fields": {
+    "name": "\u7d05\u84ee\u83ef",
+    "romanji_name": "Gurenge",
+    "translated_name": null,
+    "original_artist": "LiSA",
+    "romanji_original_artist": null,
+    "slug": "\u7d05\u84ee\u83ef"
+  }
+},
+{
+  "model": "archive.song",
+  "pk": 2,
+  "fields": {
+    "name": "\u6469\u8a36\u4e0d\u601d\u8b70\u30a2\u30c9\u30d9\u30f3\u30c1\u30e3\u30fc!",
+    "romanji_name": "Maka Fushigi Adventure!",
+    "translated_name": "Mystical Adventure!",
+    "original_artist": "\u9ad8\u6a4b\u6d0b\u6a39",
+    "romanji_original_artist": "Hiroki Takahashi",
+    "slug": "\u6469\u8a36\u4e0d\u601d\u8b70\u30a2\u30c9\u30d9\u30f3\u30c1\u30e3\u30fc"
+  }
+},
+{
+  "model": "archive.song",
+  "pk": 3,
+  "fields": {
+    "name": "God knows...",
+    "romanji_name": null,
+    "translated_name": null,
+    "original_artist": "\u5e73\u91ce\u7dbe",
+    "romanji_original_artist": "Aya Hirano",
+    "slug": "god-knows"
+  }
+},
+{
+  "model": "archive.song",
+  "pk": 4,
+  "fields": {
+    "name": "\u30cf\u30ca\u30de\u30eb\u2606\u30bb\u30f3\u30bb\u30a4\u30b7\u30e7\u30f3",
+    "romanji_name": "hanamaru senseishon",
+    "translated_name": "hanamaru sensation",
+    "original_artist": "Little Non",
+    "romanji_original_artist": null,
+    "slug": "\u30cf\u30ca\u30de\u30eb\u30bb\u30f3\u30bb\u30a4\u30b7\u30e7\u30f3"
+  }
+}
+]

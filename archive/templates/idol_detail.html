@@ -4,12 +4,17 @@
 <div class="container">
     <div class="card mt-5">
         <div class="row m-0">
-            <div class="col-lg-3 bg-light">
-                <p class="text-center pt-4">
+            <div class="col-lg-3 bg-light text-center">
+                <p class="pt-4">
                     <img width=250 src="{{ idol.thumbnail}}" alt="{{ idol.name }}'s YouTube Thumbnail">
                 </p>
                 <h2 class="card-title text-center">{{ idol.name }}</h2>
-                <h6 class="card-subtitle mb-2 text-muted">Hololive Generation Information</h6>
+                {% if idol.twitter %}
+                    <h5 class="card-subtitle mb-2 text-muted">{{ idol.group }}</h5>
+                {% endif%}
+                {% if idol.group %}
+                    <a href="{{ idol.twitter }}"><h6 class="card-subtitle mb-2 text-muted">Twitter</h6></a>
+                {% endif%}
             </div>
             <div class="col-lg-8 m-3">
                 <h3 class="text-center">Streams/Covers By {{ idol.name }}</h2>

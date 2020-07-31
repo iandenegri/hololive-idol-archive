@@ -16,6 +16,8 @@ class Idol(models.Model):
     channel = models.URLField(blank=True, unique=True)
     channel_id = models.CharField(blank=True, unique=True, max_length=264)
     slug = models.SlugField()
+    twitter = models.URLField(blank=True)
+    group = models.CharField(blank=True, max_length=256)
 
     thumbnail = models.URLField(null=True, blank=True)
 
