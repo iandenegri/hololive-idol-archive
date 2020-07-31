@@ -180,5 +180,21 @@
     "active": false,
     "guest_singers": []
   }
+},
+{
+  "model": "archive.stream",
+  "pk": 12,
+  "fields": {
+    "name": "\u96d1\u8ac7\u3001\u3068\u304d\u3069\u304d\u3001\u6b4c",
+    "singer": 2,
+    "link": "https://www.youtube.com/watch?v=9aVJtrwPk6U",
+    "youtube_id": "9aVJtrwPk6U",
+    "date_posted": "2020-07-31",
+    "original_song": false,
+    "thumbnail": "https://i.ytimg.com/vi/9aVJtrwPk6U/hqdefault.jpg",
+    "slug": "9avjtrwpk6u",
+    "active": true,
+    "guest_singers": []
+  }
 }
 ]

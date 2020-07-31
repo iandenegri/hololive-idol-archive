@@ -46,7 +46,6 @@ class Song(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name, allow_unicode=True)
-        print(self.slug)
         super(Song, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -57,8 +56,8 @@ class Stream(models.Model):
     name = models.CharField(blank=False, null=False, max_length=264)
     singer = models.ForeignKey(to=Idol, on_delete=models.CASCADE, blank=False)
     guest_singers = models.ManyToManyField(to=Idol, blank=True, related_name='guest_singers')
-    link = models.URLField(blank=True, unique=True)
-    youtube_id = models.CharField(blank=True, unique=True, max_length=264)
+    link = models.URLField(blank=False, unique=True)
+    youtube_id = models.CharField(blank=False, unique=True, max_length=264)
     songs = models.ManyToManyField(to=Song, through='StreamTrack', blank=True)
     date_posted = models.DateField(blank=True, null=True, default=timezone.now)
     original_song = models.BooleanField(default=False)
