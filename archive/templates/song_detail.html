@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
 {% block body %}
-<h1>Hololive Singing Archive</h1>
-<div class="fluid-container">
-    <p>Song Title - {{ song.name }}</p>
-    {% if song.romanji_name %}
-    <p>Romanji Title - {{ song.romanji_name }}</p>
-    {% endif %}
-    <p>Artist - {{ song.original_artist }}</p>
-    
-    <h3>Streams that this song appears in:</h3>
-    {% for stream in streams_with_song %}
-        <li><a href="{{ stream.get_absolute_url }}">{{ stream.singer }} - {{ stream.name }}</a></li>
-    {% endfor %}
+<div class="container text-center">
+    <div class="card mt-5">
+        <div class="card-header">
+            <h2 class="card-title" title="{% if song.romanji_name %}{{ song.romanji_name }}{% endif%}">{{ song.name }} - {{ song.original_artist }}</h2>
+            {% if song.translated_name %}
+                <h6 class="card-subtitle mb-2 text-muted">{{ song.translated_name }}</h6>
+            {% elif song.romanji_name %}
+                <h6 class="card-subtitle mb-2 text-muted">{{ song.romanji_name }}</h6>
+            {% endif %}
+        </div>
+        <div class="m-3">
+            <h3 class="text-center">Streams that this song appears in:</h2>
+            <ul class="list-group">
+                {% for stream in streams_with_song %}
+                    <li class="list-group-item col-lg-10 mx-auto"><a href="{{ stream.get_absolute_url }}"><img width=150 src="{{ stream.thumbnail }}" class="float-left pr-2">{{ stream.singer }} - {{ stream.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </div>
  
 {% endblock %}

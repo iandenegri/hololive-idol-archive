@@ -196,5 +196,37 @@
     "active": true,
     "guest_singers": []
   }
+},
+{
+  "model": "archive.stream",
+  "pk": 13,
+  "fields": {
+    "name": "comet/Hoshimati Suisei",
+    "singer": 1,
+    "link": "https://www.youtube.com/watch?v=3cqV5BKJHyk",
+    "youtube_id": "3cqV5BKJHyk",
+    "date_posted": "2018-11-22",
+    "original_song": true,
+    "thumbnail": "https://i.ytimg.com/vi/3cqV5BKJHyk/hqdefault.jpg",
+    "slug": "3cqv5bkjhyk",
+    "active": true,
+    "guest_singers": []
+  }
+},
+{
+  "model": "archive.stream",
+  "pk": 14,
+  "fields": {
+    "name": "Say!\u30d5\u30a1\u30f3\u30d5\u30a1\u30fc\u30ec!/\u767d\u4e0a\u30d5\u30d6\u30ad\u3010\u30aa\u30ea\u30b8\u30ca\u30eb\u66f2\u3011",
+    "singer": 13,
+    "link": "https://www.youtube.com/watch?v=pFgUluV_00s",
+    "youtube_id": "pFgUluV_00s",
+    "date_posted": "2020-01-23",
+    "original_song": true,
+    "thumbnail": "https://i.ytimg.com/vi/pFgUluV_00s/hqdefault.jpg",
+    "slug": "pfguluv_00s",
+    "active": true,
+    "guest_singers": []
+  }
 }
 ]

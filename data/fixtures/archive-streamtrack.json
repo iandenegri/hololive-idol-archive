@@ -38,5 +38,15 @@
     "position": 17,
     "timestamp": 6067
   }
+},
+{
+  "model": "archive.streamtrack",
+  "pk": 5,
+  "fields": {
+    "stream": 14,
+    "song": 5,
+    "position": 1,
+    "timestamp": null
+  }
 }
 ]
