@@ -9,6 +9,16 @@ now = timezone.now()
 
 # Create your models here.
 
+IDOL_GROUP_CHOICES = (
+    ("Hololive First Generation", "FIRST"),
+    ("Hololive Second Generation", "SECOND"),
+    ("Hololive Third Generation", "THIRD"),
+    ("Hololive Fourth Generation", "FOURTH"),
+    ("Hololive Gamers", "GAMER"),
+    ("Hololive 3D Talent", "3D"),
+    ("Hololive 2D Talent", "2D"),
+    ("INoNaKa MUSIC", "INoNaKa"),
+)
 
 class Idol(models.Model):
     name = models.CharField(blank=False, null=False, max_length=264)
@@ -17,7 +27,7 @@ class Idol(models.Model):
     channel_id = models.CharField(blank=True, unique=True, max_length=264)
     slug = models.SlugField()
     twitter = models.URLField(blank=True)
-    group = models.CharField(blank=True, max_length=256)
+    group = models.CharField(blank=True, max_length=256, choices=IDOL_GROUP_CHOICES)
 
     thumbnail = models.URLField(null=True, blank=True)
 

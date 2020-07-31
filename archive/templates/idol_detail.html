@@ -9,10 +9,10 @@
                     <img width=250 src="{{ idol.thumbnail}}" alt="{{ idol.name }}'s YouTube Thumbnail">
                 </p>
                 <h2 class="card-title text-center">{{ idol.name }}</h2>
-                {% if idol.twitter %}
+                {% if idol.group %}
                     <h5 class="card-subtitle mb-2 text-muted">{{ idol.group }}</h5>
                 {% endif%}
-                {% if idol.group %}
+                {% if idol.twitter %}
                     <a href="{{ idol.twitter }}"><h6 class="card-subtitle mb-2 text-muted">Twitter</h6></a>
                 {% endif%}
             </div>
