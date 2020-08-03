@@ -17,7 +17,7 @@
             </div>
         </div>
                     
-        {% if not stream.original_song and stream.songs|length > 0 %}
+        {% if stream.original_song == "Stream" and stream.songs|length > 0 %}
         <ul class="list-group mt-0 mb-3">
             <li class="list-group-item active">
                 <a class="text-light" href="javascript:void(0);" title="Hover a song to see its translated information if available."><h3>Song List:</h3></a>
