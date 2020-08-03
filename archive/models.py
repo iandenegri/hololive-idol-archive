@@ -21,7 +21,7 @@ IDOL_GROUP_CHOICES = (
 )
 
 STREAM_TYPE_CHOICES = (
-    ("Stream", "STREAM"),
+    ("Playlist Based Stream", "STREAM"),
     ("Original Song", "ORIGINAL"),
     ("Cover", "COVER"),
 )
@@ -76,7 +76,7 @@ class Stream(models.Model):
     youtube_id = models.CharField(blank=False, unique=True, max_length=264)
     songs = models.ManyToManyField(to=Song, through='StreamTrack', blank=True)
     date_posted = models.DateField(blank=True, null=True, default=timezone.now)
-    original_song = models.CharField(blank=True, max_length=256, choices=STREAM_TYPE_CHOICES)
+    stream_type = models.CharField(blank=True, max_length=256, choices=STREAM_TYPE_CHOICES)
     thumbnail = models.URLField(null=True, blank=True)
     slug = models.SlugField(unique=True)
     active = models.BooleanField(default=True)

@@ -7,8 +7,8 @@ from .models import Stream, Idol, Song, StreamTrack
 @admin.register(Stream)
 class StreamAdmin(admin.ModelAdmin):
     filter_horizontal = ('songs',)
-    list_display = ('name', 'singer', 'date_posted')
-    list_filter = ('singer',)
+    list_display = ('name', 'singer', 'date_posted', 'stream_type')
+    list_filter = ('singer', 'stream_type',)
     prepopulated_fields = {"slug": ("youtube_id",)}
 
 

@@ -8,6 +8,14 @@
                     <h2><a href="{{ stream.link }}">{{ stream.name }}</a></h1>
                     <h3><a href="{{ stream.singer.get_absolute_url }}">{{ stream.singer.name }}</a></h3>
                     <h4>Upload Date: {{ stream.date_posted }}</h4>
+                    <h6 class="text-muted">Video Type: <em>{{ stream.stream_type }}</em></h6>
+                    {% if stream.guest_singers.all|length > 0 %}
+                        <a class="text-muted">Featuring:</a>
+                        {{ stream.guest_singers_set }}
+                        {% for guest in stream.guest_singers.all %}
+                        <p><a href="{{ guest.get_absolute_url }}">{{ guest.name }}</a></p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
             <div class="col-lg-8">
@@ -17,7 +25,7 @@
             </div>
         </div>
                     
-        {% if stream.original_song == "Stream" and stream.songs|length > 0 %}
+        {% if stream.stream_type == "Playlist Based Stream" and stream.streamtrack_set.all|length > 0 %}
         <ul class="list-group mt-0 mb-3">
             <li class="list-group-item active">
                 <a class="text-light" href="javascript:void(0);" title="Hover a song to see its translated information if available."><h3>Song List:</h3></a>
