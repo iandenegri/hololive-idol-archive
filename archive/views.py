@@ -115,7 +115,7 @@ class StreamListView(ListView):
     template_name = 'stream_list.html'
     model = Stream
     context_object_name = 'stream_list'
-    paginate_by = 10
+    paginate_by = 15
     ordering = ['-date_posted']
 
     def get_queryset(self):
