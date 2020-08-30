@@ -2,30 +2,41 @@
 {% block body %}
 <div class="container">
 
-    <ul class="list-group pt-5 pb-3">
-    <li class="list-group-item active"><h3 class="text-center">List of streams from newest to oldest.</h3></li>
-    {% for stream in stream_list %}
-        <li class="list-group-item">
-            <a href="{% url 'archive:stream_detail' stream.slug %}">
-                <img width=350 src="{{ stream.thumbnail }}" class="float-left pr-2">
-                <p class="align-middle">{{ stream.name }}</p>
-            </a>
-            <a>
-                {% if stream.stream_type == "Original Song" %}
-                <p class="btn btn-primary">
-                {% elif stream.stream_type == "Cover" %}
-                    <p class="btn btn-success">
-                {% else %}
-                    <p class="btn btn-info">
-                {% endif %}
-                    {{stream.stream_type}}
-                </p>
-            </a>
-        </li>
-    {% empty %}
-        <li>No streams recorded yet.</li>
-    {% endfor %}
-    </ul>
+    <h3 class="text-center header pt-3">List of Streams Sorted By Date</h3>
+
+    <div class="row card-deck">
+        {% for stream in stream_list %}
+        <div class="col-lg-4 py-3">
+            <div class="card text-center">
+                <img class="card-img-top" src="{{ stream.thumbnail }}" alt="Card image cap">
+                <div class="card-body">
+                    <a href="{% url 'archive:stream_detail' stream.slug %}">
+                        <h5 class="card-title text-center">{{ stream.name }}</h5>
+                    </a>
+                  <p class="card-text">
+                    <p>Talent: <a href="{{ stream.singer.get_absolute_url }}">{{ stream.singer.name }}</a></p>
+                    <a class="text-center">
+                        {% if stream.stream_type == "Original Song" %}
+                        <p class="btn btn-primary">
+                        {% elif stream.stream_type == "Cover" %}
+                            <p class="btn btn-success">
+                        {% else %}
+                            <p class="btn btn-info">
+                        {% endif %}
+                            {{stream.stream_type}}
+                        </p>
+                    </a>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Originally Uploaded On: {{ stream.date_posted }}</small>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <li>No streams recorded yet.</li>
+        {% endfor %}
+    </div>
     <div class="text-center">
         {% if page_obj.has_previous or page_obj.has_next %}
         {% if page_obj.has_previous %}
