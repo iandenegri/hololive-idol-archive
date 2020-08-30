@@ -5,7 +5,23 @@
     <ul class="list-group pt-5 pb-3">
     <li class="list-group-item active"><h3 class="text-center">List of streams from newest to oldest.</h3></li>
     {% for stream in stream_list %}
-        <li class="list-group-item"><a href="{% url 'archive:stream_detail' stream.slug %}"><img width=350 src="{{ stream.thumbnail }}" class="float-left pr-2"><span class="align-middle">{{ stream.name }}</a></li>
+        <li class="list-group-item">
+            <a href="{% url 'archive:stream_detail' stream.slug %}">
+                <img width=350 src="{{ stream.thumbnail }}" class="float-left pr-2">
+                <p class="align-middle">{{ stream.name }}</p>
+            </a>
+            <a>
+                {% if stream.stream_type == "Original Song" %}
+                <p class="btn btn-primary">
+                {% elif stream.stream_type == "Cover" %}
+                    <p class="btn btn-success">
+                {% else %}
+                    <p class="btn btn-info">
+                {% endif %}
+                    {{stream.stream_type}}
+                </p>
+            </a>
+        </li>
     {% empty %}
         <li>No streams recorded yet.</li>
     {% endfor %}

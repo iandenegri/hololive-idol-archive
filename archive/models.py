@@ -14,6 +14,7 @@ IDOL_GROUP_CHOICES = (
     ("Hololive Second Generation", "SECOND"),
     ("Hololive Third Generation", "THIRD"),
     ("Hololive Fourth Generation", "FOURTH"),
+    ("Hololive Fifth Generation", "FIFTH"),
     ("Hololive Gamers", "GAMER"),
     ("Hololive 3D Talent", "3D"),
     ("Hololive 2D Talent", "2D"),
@@ -21,7 +22,7 @@ IDOL_GROUP_CHOICES = (
 )
 
 STREAM_TYPE_CHOICES = (
-    ("Playlist Based Stream", "STREAM"),
+    ("Karaoke Stream", "KARAOKE"),
     ("Original Song", "ORIGINAL"),
     ("Cover", "COVER"),
 )
