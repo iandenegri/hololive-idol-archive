@@ -119,7 +119,20 @@ class StreamListView(ListView):
     ordering = ['-date_posted']
 
     def get_queryset(self):
-        return Stream.objects.filter(active=True).order_by('-date_posted')
+        print(self.request.GET)
+        print(len(self.request.GET))
+        if len(self.request.GET) > 0:
+            if self.request.GET.get('stream_type', False):
+                qs = Stream.objects.filter(active=True, stream_type=self.request.GET.get('stream_type')).order_by('-date_posted')
+            else:
+                qs = Stream.objects.filter(active=True)
+            if self.request.GET.get('order_by', False):
+                qs = qs.order_by(self.request.GET.get('order_by'))
+            else:
+                qs = qs.order_by('-date_posted')
+        else:
+            qs = Stream.objects.filter(active=True).order_by('-date_posted')
+        return qs
 
 class StreamDetailView(DetailView):
 

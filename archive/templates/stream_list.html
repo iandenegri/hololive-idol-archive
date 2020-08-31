@@ -15,15 +15,15 @@
                     </a>
                   <p class="card-text">
                     <p>Talent: <a href="{{ stream.singer.get_absolute_url }}">{{ stream.singer.name }}</a></p>
-                    <a class="text-center">
-                        {% if stream.stream_type == "Original Song" %}
-                        <p class="btn btn-primary">
-                        {% elif stream.stream_type == "Cover" %}
+                    <a class="text-center" href="{% url 'archive:stream_list' %}?stream_type={{ stream.stream_type }}">
+                        {% if stream.stream_type == "ORIGINAL" %}
+                            <p class="btn btn-primary">
+                        {% elif stream.stream_type == "COVER" %}
                             <p class="btn btn-success">
                         {% else %}
                             <p class="btn btn-info">
                         {% endif %}
-                            {{stream.stream_type}}
+                            {{stream.get_stream_type_display }}
                         </p>
                     </a>
                   </p>

@@ -9,6 +9,7 @@ now = timezone.now()
 
 # Create your models here.
 
+# TODO: FIX THE ORDERING OF THIS AND THEN FIX INSTANCES IN TEMPLATE THAT SHOW THIS.
 IDOL_GROUP_CHOICES = (
     ("Hololive First Generation", "FIRST"),
     ("Hololive Second Generation", "SECOND"),
@@ -22,9 +23,9 @@ IDOL_GROUP_CHOICES = (
 )
 
 STREAM_TYPE_CHOICES = (
-    ("Karaoke Stream", "KARAOKE"),
-    ("Original Song", "ORIGINAL"),
-    ("Cover", "COVER"),
+    ("KARAOKE", "Karaoke Stream"),
+    ("ORIGINAL", "Original Song"),
+    ("COVER", "Cover"),
 )
 
 class Idol(models.Model):
