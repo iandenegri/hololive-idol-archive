@@ -16,7 +16,7 @@ class StreamAdmin(admin.ModelAdmin):
 
 @admin.register(Singer)
 class SingerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'jp_name', 'group')
+    list_display = ('name', 'jp_name', 'agency')
     list_filter = ('agency',)
     prepopulated_fields = {"slug": ("name",)}
 
