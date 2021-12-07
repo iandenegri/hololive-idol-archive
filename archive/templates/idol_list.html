@@ -5,10 +5,10 @@
 
     <input class="form-control" id="myInput" type="text" placeholder="Search for a talent...">
 
-    <ul class="list-group pt-3" id="idolList">
+    <ul class="list-group pt-3" id="singerList">
         <li class="list-group-item active"><h3 class="text-center">Talents at Hololive</h3></li>
-    {% for idol in idol_list %}
-        <li class="list-group-item"><a href="{{ idol.get_absolute_url }}"><img width=100 src="{{ idol.thumbnail }}" class="pr-2">{{ idol.name }}</a></li>
+    {% for singer in singer_list %}
+        <li class="list-group-item"><a href="{{ singer.get_absolute_url }}"><img width=100 src="{{ singer.thumbnail }}" class="pr-2">{{ singer.name }}</a></li>
     {% empty %}
         <li>No streams recorded yet.</li>
     {% endfor %}
