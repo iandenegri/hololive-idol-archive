@@ -16,12 +16,12 @@ urlpatterns = [
     path('stream/<slug>/', StreamDetailView.as_view(), name='stream_detail'),
     path('stream/<slug>/update', StreamUpdateView.as_view(), name='stream_update'),
     path('stream/<slug>/delete', StreamDeleteView.as_view(), name='stream_delete'),
-    # IDOL
-    path('idol/', IdolListView.as_view(), name='idol_list'),
-    path('idol/create/', IdolCreateView.as_view(), name='idol_create'),
-    path('idol/<slug>/', IdolDetailView.as_view(), name='idol_detail'),
-    path('idol/<slug>/delete', IdolDeleteView.as_view(), name='idol_delete'),
-    path('idol/<slug>/update', IdolUpdateView.as_view(), name='idol_update'),
+    # SINGER
+    path('singer/', SingerListView.as_view(), name='singer_list'),
+    path('singer/create/', SingerCreateView.as_view(), name='singer_create'),
+    path('singer/<slug>/', SingerDetailView.as_view(), name='singer_detail'),
+    path('singer/<slug>/delete', SingerDeleteView.as_view(), name='singer_delete'),
+    path('singer/<slug>/update', SingerUpdateView.as_view(), name='singer_update'),
     # SONG
     path('song/create/', SongCreateView.as_view(), name='song_create'),
     path('song/<str:slug>/', SongDetailView.as_view(), name='song_detail'),

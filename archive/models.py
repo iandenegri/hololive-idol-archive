@@ -10,7 +10,14 @@ now = timezone.now()
 # Create your models here.
 
 # TODO: FIX THE ORDERING OF THIS AND THEN FIX INSTANCES IN TEMPLATE THAT SHOW THIS.
-IDOL_GROUP_CHOICES = (
+AGENCY_CHOICES = (
+    ("Nijisanji", "NIJISANJI"),
+    ("Hololive", "HOLOLIVE"),
+    ("Independent", "INDIE"),
+    ("774 inc.", "774")
+)
+
+SUBGROUP_CHOICES = (
     ("Hololive First Generation", "FIRST"),
     ("Hololive Second Generation", "SECOND"),
     ("Hololive Third Generation", "THIRD"),
@@ -28,14 +35,15 @@ STREAM_TYPE_CHOICES = (
     ("COVER", "Cover"),
 )
 
-class Idol(models.Model):
+class Singer(models.Model):
     name = models.CharField(blank=False, null=False, max_length=264)
     jp_name = models.CharField(blank=True, null=True, max_length=264)
     channel = models.URLField(blank=True, unique=True)
     channel_id = models.CharField(blank=True, unique=True, max_length=264)
     slug = models.SlugField()
     twitter = models.URLField(blank=True)
-    group = models.CharField(blank=True, max_length=256, choices=IDOL_GROUP_CHOICES)
+    agency = models.CharField(blank=True, max_length=256, choices=AGENCY_CHOICES)
+    subgroup = models.CharField(blank=True, max_length=256, choices=SUBGROUP_CHOICES)
 
     thumbnail = models.URLField(null=True, blank=True)
 
@@ -44,10 +52,10 @@ class Idol(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name, allow_unicode=True)
-        super(Idol, self).save(*args, **kwargs)
+        super(Singer, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('archive:idol_detail', kwargs={'slug': self.slug})
+        return reverse('archive:singer_detail', kwargs={'slug': self.slug})
 
 
 class Song(models.Model):
@@ -72,8 +80,8 @@ class Song(models.Model):
 
 class Stream(models.Model):
     name = models.CharField(blank=False, null=False, max_length=264)
-    singer = models.ForeignKey(to=Idol, on_delete=models.CASCADE, blank=False)
-    guest_singers = models.ManyToManyField(to=Idol, blank=True, related_name='guest_singers')
+    singer = models.ForeignKey(to=Singer, on_delete=models.CASCADE, blank=False)
+    guest_singers = models.ManyToManyField(to=Singer, blank=True, related_name='guest_singers')
     link = models.URLField(blank=False, unique=True)
     youtube_id = models.CharField(blank=False, unique=True, max_length=264)
     songs = models.ManyToManyField(to=Song, through='StreamTrack', blank=True)

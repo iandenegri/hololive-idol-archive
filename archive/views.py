@@ -12,7 +12,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-from .models import Stream, Idol, Song
+from .models import Stream, Singer, Song
 
 # Third Party
 from googleapiclient.discovery import build
@@ -52,6 +52,7 @@ class AboutView(TemplateView):
     template_name = 'about.html'
 
 
+# TODO: Revamp this to be more broken up. A lot of stuff lives here that can live in utils.py
 class SearchResultsView(TemplateView):
 
     template_name = 'search.html'
@@ -63,6 +64,8 @@ class SearchResultsView(TemplateView):
             self.stream_results = ''
             self.song_results = ''
             return super().get(request, *args, **kwargs)
+
+        # STREAM SONG SEARCH UTIL
         try:
             # Streams containing songs that match that result
             self.stream_song_results = Stream.objects.filter(
@@ -74,6 +77,8 @@ class SearchResultsView(TemplateView):
         except Exception as e:
             print(e)
             self.stream_song_results = ''
+        
+        # STREAM SEARCH UTIL
         try:
             # Streams that match that result
             self.stream_results = Stream.objects.filter(
@@ -84,6 +89,8 @@ class SearchResultsView(TemplateView):
         except Exception as e:
             print(e)
             self.stream_results = ''
+
+        # SONG SEARCH UTIL
         try:
             # Songs that match that result
             self.song_results = Song.objects.filter(
@@ -96,6 +103,10 @@ class SearchResultsView(TemplateView):
         except Exception as e:
             print(e)
             self.song_results = ''
+
+        # SINGER SEARCH UTIL
+        # Todo: see above
+
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -103,6 +114,7 @@ class SearchResultsView(TemplateView):
             stream_song_results=self.stream_song_results,
             stream_results=self.stream_results,
             song_results=self.song_results,
+            # singer_results=self.singer_results
             **kwargs)
 
 #######################################
@@ -187,24 +199,24 @@ class StreamUpdateView(UpdateView):
 
 
 #######################################
-# IDOL VIEWS
+# SINGER VIEWS
 #######################################
 
 
-class IdolListView(ListView):
+class SingerListView(ListView):
 
-    template_name = 'idol_list.html'
-    model = Idol
-    context_object_name = 'idol_list'
+    template_name = 'singer_list.html'
+    model = Singer
+    context_object_name = 'singer_list'
     paginate_by = 100
-    queryset = Idol.objects.all().order_by('name')
+    queryset = Singer.objects.all().order_by('name')
 
 
-class IdolDetailView(DetailView):
+class SingerDetailView(DetailView):
 
-    template_name = 'idol_detail.html'
-    model = Idol
-    context_object_name = 'idol'
+    template_name = 'singer_detail.html'
+    model = Singer
+    context_object_name = 'singer'
 
     def get_object(self):
         obj = super().get_object()
@@ -230,27 +242,27 @@ class IdolDetailView(DetailView):
 
 
 @method_decorator(login_required, name='dispatch')
-class IdolCreateView(CreateView):
+class SingerCreateView(CreateView):
 
-    template_name = 'idol_create.html'
-    model = Idol
+    template_name = 'singer_create.html'
+    model = Singer
     fields = '__all__'
 
 
 @method_decorator(login_required, name='dispatch')
-class IdolDeleteView(DeleteView):
+class SingerDeleteView(DeleteView):
 
-    model = Idol
-    success_url = reverse_lazy('archive:idol_list')
-    template_name = 'idol_delete.html'
+    model = Singer
+    success_url = reverse_lazy('archive:singer_list')
+    template_name = 'singer_delete.html'
 
 
 @method_decorator(login_required, name='dispatch')
-class IdolUpdateView(UpdateView):
+class SingerUpdateView(UpdateView):
 
-    model = Idol
+    model = Singer
     fields = '__all__'
-    template_name = 'idol_update.html'
+    template_name = 'singer_update.html'
 
 
 #######################################
