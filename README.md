@@ -16,3 +16,6 @@ Welcome to the source code for the Virtual Singer Archive Project (vSAP)! The go
 ## Todo:
 - Search view needs to be added so the search bar in the nav does something
 - Overhaul the UI
+- Add a job that populates a new vtuber's profile with appropriate videos
+- Add a job that populates an existing vtuber's profile with appropriate videos that were uploaded in the past day
+- Add a job that checks the number of views a video has gotten in the past day, week, month, etc.
